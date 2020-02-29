@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mru y mua</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body{
+            display: grid;
+            column-gap: 15px;
+            grid-template-columns: 50% 50%;
+            grid-template-rows:auto;
+            grid-template-areas: "forma resultados"
+            "forma grafico";
+            padding: 15px;
+        }
+        form{
+            grid-area: forma;
+            grid-gap:10px;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            grid-template-rows: auto;
+            grid-template-areas: "cuerpo1 cuerpo2"
+            "formaGrafico formaGrafico";
+        }
+        #formCuerpo1{
+            grid-area: cuerpo1;
+        }
+        #formCuerpo2{
+            grid-area: cuerpo2;
+        }
+        #formGrafico{
+            grid-area: formaGrafico;
+        }
+        #contenedorPlot{
+            grid-area:grafico;
+        }
+        #contenedorRes{
+            display: none;
+            grid-area:resultados;
+        }
+    </style>
+</head>
+<body>
+    
+    <form onsubmit="return false;">
+        <div id="formCuerpo1">
+            <h2>PROPIEDADES CUERPO 1</h2>
+            <div class="form-group">
+                <label for="s0">Posición inicial</label>
+                <input type="number" step="0.001" class="form-control" id="s0" value="0">
+            </div>
+            <div class="form-group">
+                <label for="v0">Velocidad inicial</label>
+                <input type="number" step="0.001" class="form-control" id="v0" value="0">
+            </div>
+            <div class="form-group">
+                <label for="acc">Aceleración</label>
+                <input type="number" step="0.001" class="form-control" id="acc" value="0">
+            </div>
+            <div class="form-group">
+                <label for="t0">Tiempo inicial</label>
+                <input type="number" step="0.001" class="form-control" id="t0" value="0">
+            </div>
+        </div>
+        <div id="formCuerpo2">
+            <h2>PROPIEDADES CUERPO 2</h2>
+            <div class="form-group">
+                <label for="s02">Posición inicial</label>
+                <input type="number" step="0.001" class="form-control" id="s02" value="0">
+            </div>
+            <div class="form-group">
+                <label for="v02">Velocidad inicial</label>
+                <input type="number" step="0.001" class="form-control" id="v02" value="0">
+            </div>
+            <div class="form-group">
+                <label for="acc2">Aceleración</label>
+                <input type="number" step="0.001" class="form-control" id="acc2" value="0">
+            </div>
+            <div class="form-group">
+                <label for="t02">Tiempo inicial</label>
+                <input type="number" step="0.001" class="form-control" id="t02" value="0">
+            </div>
+        </div>
+        <div id="formGrafico">
+            <h2>PROPIEDADES GRÁFICO</h2>
+            <div class="form-group">
+                <label for="tMin">Tiempo mínimo</label>
+                <input type="number" step="0.001" class="form-control" id="tMin" value="0">
+            </div>
+            <div class="form-group">
+                <label for="tMax">Tiempo máximo</label>
+                <input type="number" step="0.001" class="form-control" id="tMax" value="5">
+            </div>
+            <button onclick="plotPosicion()" class="btn btn-primary">Graficar</button>
+        </div>
+    </form>
+    <div id="contenedorPlot" style="width:600px;height:600px;"></div>
+    <div id="contenedorRes">
+        <h2>Tiempos de encuentro</h2>
+        <table class="table">
+            <tr><th>Tiempo</th><th>Posición</th></tr>
+            
+        </table>
+    </div>
+
+    <script src="ecCuadratica.js"></script>
+    <script src="grafica.js"></script>
+    
+</body>
+</html>
