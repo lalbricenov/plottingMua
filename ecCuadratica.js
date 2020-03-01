@@ -24,4 +24,3 @@ let solveCuadratica = function(a, b, c)
     
     return sols;
 }
-console.log("This is a test")

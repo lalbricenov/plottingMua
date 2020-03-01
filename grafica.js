@@ -129,15 +129,27 @@ let fillTable = function(points)
     // Create an empty <tr> element and add it to the 1st position of the table:
     for(let i = 0; i < points.length; i++)
     {
-        console.log("Aqui");
-
         let row = table.insertRow(i+1);
-
         // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
         let cell1 = row.insertCell(0);
         let cell2 = row.insertCell(1);
-        cell1.innerHTML = points[i].t;
-        cell2.innerHTML = points[i].s;
+        if(points.length == 0)
+        {
+            cell1.innerHTML = "Los cuerpos no se encuentran";
+            break;
+        }else if(isNaN(points[i].t))// el resultado es NaN cuando son exactamente iguales
+        {
+            cell1.innerHTML = "Tienen infinitos puntos en común";
+            break;
+        }else if(!isFinite(points[i].t))
+        {
+            cell1.innerHTML = "Los cuerpos no se encuentran";
+            break;
+        }else{
+
+            cell1.innerHTML = points[i].t;
+            cell2.innerHTML = points[i].s;
+        }
     }
     document.getElementById("contenedorRes").style.display="block";
     document.getElementById("contenedorPlot").style.display="block";
