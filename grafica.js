@@ -100,6 +100,7 @@ let plotPosicion = function()
         // la palabra bind liga la función al entorno deseado, en este caso se desea ligarla al objeto mismo al que pertenece. De esa manera cuando se use
         // la palabra this dentro de la función pos esta va a hacer referencia al objeto particle1.
         Plotly.newPlot(contenedor, [createObject(particle1.s.bind(particle1), tMin, tMax, step), createObject(particle2.s.bind(particle2), tMin, tMax, step)], layout, {scrollZoom:true});
+        window.scrollTo(0, 0);
         // Plotly.newPlot( TESTER, [createObject(f, -4, 4, 0.1), {
         // x: [1, 2, 3, 4, 5],
         // y: [1, 2, 4, 8, 16] }], {
