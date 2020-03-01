@@ -22,7 +22,7 @@
                 grid-template-areas: "resultados"
                 "grafico"
                 "forma";
-                padding: 15px;
+                padding: 5px;
             }
         }
         
@@ -55,12 +55,19 @@
         }
         #contenedorPlot{
             display: none;
-            justify-self: center;
+            width: 100%;
             grid-area:grafico;
         }
         #contenedorRes{
             display: none;
             grid-area:resultados;
+        }
+        .body > [style^='--aspect-ratio']::before {
+            content: "";
+            display: inline-block;
+            width: 1px;
+            height: 0;
+            padding-bottom: calc(100% / (var(--aspect-ratio)));
         }
     </style>
 </head>
@@ -118,7 +125,7 @@
             <button onclick="plotPosicion()" class="btn btn-primary">Graficar</button>
         </div>
     </form>
-    <div id="contenedorPlot" style="width:600px;height:600px;"></div>
+    <div id="contenedorPlot" style="--aspect-ratio: 1/1;"></div>
     <div id="contenedorRes">
         <h2>Puntos de encuentro</h2>
         <table class="table">
