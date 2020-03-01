@@ -8,14 +8,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
         body{
-            display: grid;
-            column-gap: 15px;
-            grid-template-columns: 40% 60%;
-            grid-template-rows:auto;
-            grid-template-areas: "forma resultados"
-            "forma grafico";
-            padding: 15px;
+                display: grid;
+                column-gap: 15px;
+                grid-template-columns: 40% 60%;
+                grid-template-rows:auto;
+                grid-template-areas: "forma resultados"
+                "forma grafico";
+                padding: 15px;
+            }
+        @media screen and (max-width: 1200px) {
+            body{
+                grid-template-columns: 100%;
+                grid-template-areas: "resultados"
+                "grafico"
+                "forma";
+                padding: 15px;
+            }
         }
+        
         form{
             grid-area: forma;
             grid-gap:10px;
@@ -24,6 +34,15 @@
             grid-template-rows: auto;
             grid-template-areas: "cuerpo1 cuerpo2"
             "formaGrafico formaGrafico";
+        }
+        @media screen and (max-width: 780px) {
+            form{
+                grid-template-columns: 100%;
+                grid-template-rows: auto;
+                grid-template-areas: "cuerpo1"
+                "cuerpo2"
+                "formaGrafico";
+            }
         }
         #formCuerpo1{
             grid-area: cuerpo1;
@@ -35,6 +54,8 @@
             grid-area: formaGrafico;
         }
         #contenedorPlot{
+            display: none;
+            justify-self: center;
             grid-area:grafico;
         }
         #contenedorRes{

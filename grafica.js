@@ -140,5 +140,6 @@ let fillTable = function(points)
         cell2.innerHTML = points[i].s;
     }
     document.getElementById("contenedorRes").style.display="block";
+    document.getElementById("contenedorPlot").style.display="block";
     
 }
