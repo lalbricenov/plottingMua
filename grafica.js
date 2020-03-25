@@ -110,7 +110,7 @@ let plotPosicion = function()
 
 let findEncuentros = function(p1, p2)
 {
-    let c = p1.s0 - p2.s0 + p1.v0 * p1.t0 - p2.v0 * p2.t0 + p1.a * Math.pow(p1.t0, 2) / 2 - p2.a * Math.pow(p2.t0, 2) / 2;
+    let c = p1.s0 - p2.s0 - p1.v0 * p1.t0 + p2.v0 * p2.t0 + p1.a * Math.pow(p1.t0, 2) / 2 - p2.a * Math.pow(p2.t0, 2) / 2;
     let b = p1.v0 - p2.v0 - p1.t0 * p1.a + p2.t0 * p2.a;
     let a = (p1.a - p2.a) / 2;
     return solveCuadratica(a, b, c);
